@@ -1,17 +1,19 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const blogController = require('./../controllers/blogController')
+const blogController = require("./../controllers/blogController");
 
-router.param('id', blogController.checkId);
+// router.param('id', blogController.checkId);
 // router.param({}, blogController.checkBody)
 
 router
-.route('/')
-.get(blogController.getAllBlogs)
-.post(blogController.createBlog);
+  .route("/")
+  .get(blogController.getAllBlogs)
+  .post(blogController.createBlog);
 
 router
-.route('/:id')
-.get(blogController.getBlog);
+  .route("/:id")
+  .get(blogController.getBlog)
+  .patch(blogController.updateBlog)
+  .delete(blogController.deleteBlog);
 
-module.exports = router
+module.exports = router;
