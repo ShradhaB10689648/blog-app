@@ -102,12 +102,11 @@ exports.createBlog = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
   try {
-    console.log(req.params.id, req.body);
     const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
-    console.log(blog);
+
     res.status(200).json({
       message: "success",
       data: {
@@ -124,9 +123,8 @@ exports.updateBlog = async (req, res) => {
 
 exports.deleteBlog = async (req, res) => {
   try {
-    console.log("In delete");
     let deletedBlog = await Blog.findByIdAndDelete(req.params.id);
-    console.log("deletedBlog", deletedBlog);
+
     res.status(204).json({
       status: "success",
       message: "Deleted Successfully",
