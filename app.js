@@ -18,9 +18,9 @@ module.exports = app;
 // app.get('/api/v1/blogs/:id', getBlog)
 app.use("/api/v1/blogs", blogRouter);
 
-// app.all("*", (req, res, next) => {
-//   next(new AppError(`Requested URL ${req.originalUrl} not found`, 404));
-// });
+app.all("*", (req, res, next) => {
+  next(new AppError(`Requested URL ${req.originalUrl} not found`, 404));
+});
 
 // global error handler
 app.use(globalErrorHandler);
